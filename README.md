@@ -1,6 +1,6 @@
 ## Helium mnemonic seed generator
 
-Zero dependency tool to generate mnemonic seeds for Helium compatible with the CLI and mobile wallets.
+Zero dependency tool to generate mnemonic seeds compatible with Helium CLI and mobile wallets.
 
 ### Requirements:
 
