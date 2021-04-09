@@ -1,12 +1,12 @@
-# Helium mnemonic seed generator
+## Helium mnemonic seed generator
 
-Zero dependency tool to generate mnemonic seeds for Helium.
+Zero dependency tool to generate mnemonic seeds for Helium compatible with the CLI and mobile wallets.
 
-## Requirements:
+### Requirements:
 
 -   NodeJS: https://nodejs.org/en/download/
 
-## Instructions:
+### Instructions:
 
 ```
 git clone https://github.com/Factoshi/helium-seed-generator.git
@@ -14,6 +14,6 @@ cd helium-seed-generator
 ./generate-seed
 ```
 
-## Credit:
+### Credit:
 
-Code mostly lifted from [@helium/crypto](https://github.com/helium/helium-js/tree/master/packages/crypto) with some tweaks.
+Code mostly lifted from [helium-js](https://github.com/helium/helium-js) with some tweaks.
