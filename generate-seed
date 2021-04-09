@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { randomBytes, createHash } = require('crypto');
 const wordlist = require('./wordlist.json');
 
