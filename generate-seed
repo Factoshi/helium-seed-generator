@@ -12,18 +12,7 @@ function bytesToBinary(bytes) {
         .join('');
 }
 
-function fromEntropy(entropy) {
-    if (entropy.length < 16) {
-        throw new Error('invalid entropy, less than 16');
-    }
-    if (entropy.length > 32) {
-        throw new Error('invalid entropy, greater than 32');
-    }
-    if (entropy.length % 4 !== 0) {
-        throw new Error('invalid entropy, not divisble by 4');
-    }
-
-    const entropyBits = bytesToBinary([].slice.call(entropy));
+function bytesToMnemonic(entropy) {
     // At the time of writing, the original checksum function in helium-js is broken, as it always
     // calculates the checksum to be '0000'. Furthermore, the CLI wallet has internalised that bug by
     // relying on the presence of a constant checksum to verify the integrity of the seed. This file
@@ -32,6 +21,7 @@ function fromEntropy(entropy) {
     // CLI wallet: https://github.com/helium/helium-wallet-rs/blob/e550a8d378b301bdf72a618cb1961e03a17f4a65/src/mnemonic/mod.rs#L38-L42
     // helium-js: https://github.com/helium/helium-js/issues/120
     const checksumBits = '0000';
+    const entropyBits = bytesToBinary([].slice.call(entropy));
 
     const bits = entropyBits + checksumBits;
     const chunks = bits.match(/(.{1,11})/g) || [];
@@ -42,6 +32,6 @@ function fromEntropy(entropy) {
 
 (() => {
     const rb = randomBytes(16);
-    const mnemonic = fromEntropy(rb);
+    const mnemonic = bytesToMnemonic(rb);
     console.log(mnemonic.join(' '));
 })();
